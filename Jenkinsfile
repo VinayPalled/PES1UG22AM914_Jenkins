@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {  
             steps {
-                sh 'gp++ -o output main/hello.cpp'  // error introduced
+                sh 'g++ -o output main/hello.cpp'  // error introduced
             }
         }
         
