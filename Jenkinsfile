@@ -1,16 +1,18 @@
 pipeline {
-    agent any  // This allows Jenkins to run the pipeline on any available agent
-    
+    agent any  // Run the pipeline on any available agent
+
     stages {
         stage('Build') {  
             steps {
-                sh 'g++ -o output main/hello.cpp'  // error introduced
+                sh 'ls -l'  // List files to verify if program.cpp is present
+                sh 'g++ -o output main.cpp'  // Compile the C++ file
+                build job: 'PES1UG22AM914-1'  // Trigger the first Jenkins job
             }
         }
         
         stage('Test') {
             steps {
-                sh './output'  // Executes the compiled C++ program
+                sh './output'  // Execute the compiled C++ program
             }
         }
         
@@ -23,7 +25,7 @@ pipeline {
     
     post {
         failure {
-            echo 'Pipeline failed'  // If any stage fails, print this message
+            echo 'Pipeline failed'  // Print message if any stage fails
         }
     }
 }
