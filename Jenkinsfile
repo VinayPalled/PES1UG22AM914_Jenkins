@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {  
             steps {
                 sh 'ls -l'  // List files to verify if program.cpp is present
-                sh 'gp++ -o output main.cpp'  // Compile the C++ file
+                sh 'g++ -o output main.cpp'  // Compile the C++ file
                 build job: 'PES1UG22AM914-1'  // Trigger the first Jenkins job
             }
         }
